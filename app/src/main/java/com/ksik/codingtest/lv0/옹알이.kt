@@ -1,6 +1,6 @@
 package com.ksik.codingtest.lv0
 
-// 프로그래머스 옹알이
+// https://school.programmers.co.kr/learn/courses/30/lessons/120956
 fun main(){
     val babbling = arrayOf("ayaye", "uuuma", "ye", "yemawoo", "ayaa")
     println("result :: ${Solution().solution(babbling)}")

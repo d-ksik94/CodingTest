@@ -1,58 +1,42 @@
 package com.ksik.codingtest.lv0
 
-/*
-* 문제 설명
-연속된 세 개의 정수를 더해 12가 되는 경우는 3, 4, 5입니다. 두 정수 num과 total이 주어집니다. 연속된 수 num개를 더한 값이 total이 될 때, 정수 배열을 오름차순으로 담아 return하도록 solution함수를 완성해보세요.
-
-제한사항
-1 ≤ num ≤ 100
-0 ≤ total ≤ 1000
-num개의 연속된 수를 더하여 total이 될 수 없는 테스트 케이스는 없습니다.
-입출력 예
-num	total	result
-3	12	[3, 4, 5]
-5	15	[1, 2, 3, 4, 5]
-4	14	[2, 3, 4, 5]
-5	5	[-1, 0, 1, 2, 3]
-입출력 예 설명
-입출력 예 #1
-
-num = 3, total = 12인 경우 [3, 4, 5]를 return합니다.
-입출력 예 #2
-
-num = 5, total = 15인 경우 [1, 2, 3, 4, 5]를 return합니다.
-입출력 예 #3
-
-4개의 연속된 수를 더해 14가 되는 경우는 2, 3, 4, 5입니다.
-입출력 예 #4
-
-설명 생략*/
+//https://school.programmers.co.kr/learn/courses/30/lessons/120923
 fun main() {
-    val num = 5
-    val total = 5
-    println("result :: ${solution(num, total).contentToString()}")
+    val num =100
+    val total = 1000
+    val result = solution(num, total)
+    println("result :: ${result.contentToString()}")
+    println("result2 :: ${result.reduce { acc, i -> acc+i }}")
 }
 
 fun solution(num: Int, total: Int): IntArray {
-    println("num ${num+total}")
-    var answer: IntArray = IntArray(num)
-    val numRange = total.unaryMinus()..total
-    val numArray = numRange.toCollection(mutableListOf<Int>())
-    var start = 0
-    var result = 0
-    while (result != total) {
-        for (i in 1..num) {
-            result += numArray[start + (i - 1)]
-        }
-        println(result)
-        if (result == total) {
-            for (i in 1..num) {
-                answer[i - 1] = numArray[start + (i - 1)]
-            }
-        } else {
-            result = 0
-            start++
+    println("aa :: ${(total / num - (num - 1) / 2)}")
+    return (total / num - (num - 1) / 2).let { t ->
+        IntArray(num) { index ->
+            println("cc :: ${index}")
+            println("dd :: ${index + t}")
+            index + t
         }
     }
-    return answer
 }
+
+/*fun solution(num: Int, total: Int): IntArray {
+    val numRange = total.unaryMinus()..total
+    val numArray = numRange.toCollection(mutableListOf<Int>())
+
+    var answer: IntArray = IntArray(num)
+    var pointer = 0
+    while(true){
+        var answerTotal = 0
+        for(i in answer.indices){
+            if(pointer+i < numArray.size){
+                answer[i] = numArray[pointer+i]
+            }
+        }
+        answerTotal = answer.reduce { acc, i ->acc+i}
+        if (answerTotal== total) break
+        else pointer++
+    }
+
+    return answer
+}*/
