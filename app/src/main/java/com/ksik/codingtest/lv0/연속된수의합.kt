@@ -8,7 +8,7 @@ fun main() {
     println("result :: ${result.contentToString()}")
     println("result2 :: ${result.reduce { acc, i -> acc+i }}")
 }
-
+//더 좋은방식..
 fun solution(num: Int, total: Int): IntArray {
     println("aa :: ${(total / num - (num - 1) / 2)}")
     return (total / num - (num - 1) / 2).let { t ->
@@ -20,6 +20,7 @@ fun solution(num: Int, total: Int): IntArray {
     }
 }
 
+//내가한거
 /*fun solution(num: Int, total: Int): IntArray {
     val numRange = total.unaryMinus()..total
     val numArray = numRange.toCollection(mutableListOf<Int>())
